@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Series - Netflix</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      background-image: url("https://i.blogs.es/849fe3/portada-netflix/1366_2000.jpg");
+      color: #fff;
+    }
+    header {
+      background-color: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      color: #e50914;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #e50914;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .btn-primary {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #ff6f61;
+    }
+    .language-selector select {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .hero {
+        background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/5e3b5b71-5a77-4a5b-97c1-0e00b575d4b6/4fd90f8e-4ef5-41fa-8de0-1cd4bc39a481/CO-es-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem;
+    }
+    .hero-content {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    .hero-content h1 {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    footer {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      background-color: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    footer ul {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    footer ul li a {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      text-decoration: none;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    footer ul li a:hover {
+      color: #fff;
+    }
+
+    .highlight {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .highlight-content img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    .highlight h2 {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+        margin-top: 1rem;
+        font-size: 2.5rem;
+        color: #e50914;
+    }
+
+    .highlight p {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .video-carousel {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .video {
+        width: 100%;
+        max-width: 100%;
+        height: 450px;  
+        display: none; 
+    }
+
+    .video.active {
+        display: block; 
+    }
+
+    .catalog {
+        margin-top: 2rem;
+    }
+
+    .catalog h2 {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+    }
+
+    .carousel-container {
+        position: relative;
+    }
+
+    .carousel {
+        display: flex;
+        overflow: hidden;
+        scroll-behavior: smooth;
+    }
+
+    .movie {
+        flex: 0 0 27%;
+        text-align: center;
+        padding: 0.10rem;
+        transition: transform 0.12s ease;
+        box-sizing: border-box;
+    }
+
+    .movie img {
+        width: 85%;
+        height: 80%;
+        border-radius: 20px;
+    }
+
+    .movie p {
+        font-family: "Roboto", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .movie span {
+        font-size: 2rem;
+        font-weight: bold;
+        display: block;
+    }
+
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        color: #f00b0b;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        z-index: 100;
+    }
+
+    .carousel-arrow.left {
+            left: 0;
+    }
+
+    .carousel-arrow.right {
+        right: 0;
+    }
+
+    .carousel-arrow:hover {
+        background-color: #e50914;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">Netflix</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="netflix.html">HOME</a></li>
+        <li><a href="movies.html">MOVIES</a></li>
+        <li><a href="series.html">SERIES</a></li>
+        <li><a href="mylist.html">MY LIST</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="language-selector">
+        <select>
+          <option value="es">Spanish</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <a href="inicio-sesion.html"><button class="btn-primary">Sign In</button></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="highlight">
+        <div class="highlight-content">
+          <div class="video-carousel">
+            
+            <iframe id="video3" class="video" src="https://www.youtube.com/embed/BmllggGO4pM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="video4" class="video" src="https://www.youtube.com/embed/LlJGhxL4yUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+      
+          <h2>New Blockbuster Movie!</h2>
+          <p>Experience the most awaited movie of the year. Now streaming exclusively on Netflix.</p>
+          <a href="#" class="btn-primary">WATCH NOW</a>
+        </div>
+      </section>
+      
+    <section class="catalog">
+      <h2>POPULAR MOVIES</h2>
+      <div class="carousel-container">
+        <button class="carousel-arrow left">&larr;</button>
+        <div class="carousel">
+          <div class="movie"><span>1</span><img src="https://hips.hearstapps.com/hmg-prod/images/5wducarmueomnh1wkca65pputxv-66ab60c945d48.jpg?crop=1xw:1xh;center,top&resize=980:*" alt="Movie 1"><</div>
+          <div class="movie"><span>2</span><img src="https://i.pinimg.com/474x/2d/8d/2f/2d8d2f2c7587b78abe495398f99e3bc0.jpg" alt="Movie 2"></div>
+          <div class="movie"><span>3</span><img src="https://cdn.milenio.com/uploads/media/2019/12/09/the-witcher-serie-fantasia-netflix.jpg" alt="Movie 3"></div>
+          <div class="movie"><span>4</span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0eD1mRYW9eUKyGbSUsHbHhggWbL_gGQPug&s" alt="Movie 4"></div>
+          <div class="movie"><span>5</span><img src="https://es.web.img2.acsta.net/c_300_300/img/9f/45/9f45a46dbc7073240771701072132a04.jpg" alt="Movie 1"></div>
+          <div class="movie"><span>6</span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbkkAThTphQ_fAB9Nr1gQGm1Jsc9xKSWz1AQ&s" alt="Movie 2"></div>
+          <div class="movie"><span>7</span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzKPuZaR8lAtAZ81UCBjsL_a1JVfgQPW2hHfSpGVhKmfQz9nHqVlxXrsKAaztqWVAdqDw&usqp=CAU" alt="Movie 3"></div>
+          
+        </div>
+        <button class="carousel-arrow right">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="catalog">
+      <h2>COMING SOON</h2>
+      <div class="carousel-container">
+        <button class="carousel-arrow left">&larr;</button>
+        <div class="carousel">
+            <div class="movie"><span>1</span><img src="https://pics.filmaffinity.com/El_Sr_Plancton_Serie_de_TV-103359767-large.jpg" alt="Movie 1"></div>
+          <div class="movie"><span>2</span><img src="https://es.web.img2.acsta.net/pictures/22/08/23/19/13/2103423.jpg" alt="Movie 2"></div>
+          <div class="movie"><span>3</span><img src="https://cdn2.mediotiempo.com/uploads/media/2021/03/31/kimetsu-no-yaiba-es-uno.jpg" alt="Movie 3"></div>
+          <div class="movie"><span>4</span><img src="https://www.lavanguardia.com/files/content_image_mobile_filter/uploads/2024/10/15/670e2bc8a517c.jpeg" alt="Movie 4"></div>
+          <div class="movie"><span>5</span><img src="https://pics.filmaffinity.com/No_te_muevas-752654470-large.jpg" alt="Movie 1"></div>
+          <div class="movie"><span>6</span><img src="https://dnm.nflximg.net/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABc36A6FNlbkQmf8XxwRVSVqVnGmb4xXvz8V1s5yMq5yZuDDfE_q0l4f0EOdvYT-0AbUb6Zn47lzfD2ZTt-g0C6CX2Qpz8tjxTMBT0YBobPDgEi9VRpw3I6OvWPEBXZrOX8QMRg.jpg?r=6bd" alt="Movie 2"></div>
+          <div class="movie"><span>7</span><img src="https://preview.redd.it/the-buckingham-murders-is-coming-to-netflix-on-november-8-v0-9fhd4afr5fzd1.png?auto=webp&s=9fb7ffbaa610c588b62056c6061bfdfaa53d7942" alt="Movie 3"></div>
+        </div>
+        <button class="carousel-arrow right">&rarr;</button>
+      </div>
+    </section>
+
+    
+
+  <footer>
+    <ul>
+      <li><a href="#terms">Terms of Use</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#help">Help Center</a></li>
+      <li><a href="#corporate">Corporate Information</a></li>
+    </ul>
+    <p>&copy; 2024 Netflix. All rights reserved.</p>
+  </footer>
+
+    <script>
+        document.querySelectorAll('.carousel-container').forEach(container => {
+            const carousel = container.querySelector('.carousel');
+            const leftArrow = container.querySelector('.carousel-arrow.left');
+            const rightArrow = container.querySelector('.carousel-arrow.right');
+
+
+            leftArrow.addEventListener('click', () => {
+                carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
+            });
+
+            rightArrow.addEventListener('click', () => {
+                carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
+            });
+        });
+
+        window.onload = function () {
+            const videos = document.querySelectorAll('.video'); 
+            let currentVideo = 0; 
+
+            function playNextVideo() {
+                videos[currentVideo].classList.remove('active');
+                currentVideo = (currentVideo + 1) % videos.length;
+                videos[currentVideo].classList.add('active');
+            }
+
+            videos[currentVideo].classList.add('active');
+                setTimeout(function() {
+                playNextVideo();
+                }, 190000); 
+
+            videos.forEach(video => {
+                video.addEventListener('ended', playNextVideo);
+            });
+        };
+  </script>
+</body>
+</html>
